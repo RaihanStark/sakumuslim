@@ -1,0 +1,147 @@
+{% extends "layout.html" %}  
+{% block content %}
+
+<!-- Header -->
+<div class="header pb-7 pt-5 pt-md-8">
+  <div class="container-fluid ">
+    <div class="header-body ">
+      <!-- Card stats -->
+      <div class="row">
+        <div class="col-xl-4 col-md-6">
+          <div class="card card-stats mb-4 mb-xl-0 bg-gradient-blue h-100">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase mb-0 text-white">Tanggal Hijriyah</h5>
+                  <span class="h2 font-weight-bold mb-0 text-white">{{ tanggalhijriyah }}</span>
+                </div>
+                <div class="col-auto">
+                  <div class="icon icon-shape text-white ">
+                    <i class="ni ni-calendar-grid-58"></i>
+                  </div>
+                </div>
+              </div>
+              <p class="mt-3 mb-0 text-white text-sm">
+                <span class="text-nowrap">{{ jadwalsolat['jadwal']['data']['tanggal'] }}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-md-6 pt-3 pt-md-0">
+          <div class="card card-stats mb-4 mb-xl-0 bg-gradient-purple h-100">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase text-white mb-0">Waktu Shalat Saat Ini</h5>
+                  <span class="h2 font-weight-bold mb-0 text-white">{{ waktusolat}}</span>
+                </div>
+                <div class="col-auto">
+                  <div class="icon icon-shape text-white">
+                    <i class="ni ni-istanbul"></i>
+                  </div>
+                </div>
+              </div>
+              <p class="mt-3 mb-0 text-muted text-sm">
+                <span class="text-nowrap text-white">Sekarang masuk waktu solat {{ waktusolat }}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-md-12 pt-3 pt-xl-0">
+          <div class="card card-stats mb-4 mb-xl-0 bg-gradient-red h-100">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase text-white mb-0">Waktu Shalat Berikutnya</h5>
+                  <span class="h2 font-weight-bold mb-0 text-white">{{ solatberikutnya['tersisa'] }}</span>
+                </div>
+                <div class="col-auto">
+                  <div class="icon icon-shape text-white ">
+                    <i class="ni ni-watch-time"></i>
+                  </div>
+                </div>
+              </div>
+              <p class="mt-3 mb-0 text-muted text-sm">
+                <span class="text-nowrap text-white">Waktu Shalat Berikutnya adalah <span class="h2 text-white">{{solatberikutnya['waktuberikutnya']}}</span> </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid mt--7">
+  <div class="row mt-2 mt-md-4 pt-5 pt-md-0">
+    <div class="col-xl-8">
+      <div class="shadow card bg-gradient-green h-100 ">
+        <div class="card-body">
+          <div class="row mb-3">
+            <div class="col">
+              <h1 class="mb-0 text-center text-white font-weight-600">Ayat Al-Quran Hari Ini</h1>
+            </div>
+          </div>
+          <blockquote class="blockquote text-center">
+            <h1 class="mb-0 text-white">{{ quran['arab'] }}<br>
+              {{ quran['terjemah'] }}
+            </h1>
+            <footer class="blockquote-footer text-white">{{ quran['surah'] }} ({{ quran['arti'] }}) <cite title="Source Title">Ayat {{ quran['ayat']}}</cite>
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 pt-4 pt-xl-0">
+      <div class="shadow card bg-gradient-orange shadow ">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h1 class="text-center text-white font-weight-600">Jadwal Shalat</h1>
+            </div>
+          </div>
+          <!-- Subuh -->
+          <div class="row">
+            <h1></h1>
+            <div class="col">
+              <h5 class="text-uppercase mb-0 text-white">Shubuh</h5>
+              <span class="h1 font-weight-bold mb-0 text-white">{{ jadwalsolat['jadwal']['data']['subuh'] }}</span>
+            </div>
+
+            <div class="col">
+              <h5 class="text-uppercase mb-0 text-white">Fajr</h5>
+              <span class="h1 font-weight-bold mb-0 text-white">{{ jadwalsolat['jadwal']['data']['terbit'] }}</span>
+            </div>
+            <div class="col">
+              <h5 class="text-uppercase mb-0 text-white">Dzuhur</h5>
+              <span class="h1 font-weight-bold mb-0 text-white">{{ jadwalsolat['jadwal']['data']['dzuhur'] }}</span>
+            </div>
+            <div class="col">
+              <h5 class="text-uppercase mb-0 text-white">Ashr</h5>
+              <span class="h1 font-weight-bold mb-0 text-white">{{ jadwalsolat['jadwal']['data']['ashar'] }}</span>
+            </div>
+            <div class="col">
+              <h5 class="text-uppercase mb-0 text-white">Maghrib</h5>
+              <span class="h1 font-weight-bold mb-0 text-white">{{ jadwalsolat['jadwal']['data']['maghrib'] }}</span>
+            </div>
+
+            <div class="col">
+              <h5 class="text-uppercase mb-0 text-white">Isya</h5>
+              <span class="h1 font-weight-bold mb-0 text-white">{{ jadwalsolat['jadwal']['data']['isya'] }}</span>
+            </div>
+          </div>
+          <p class="mt-3 mb-0 text-muted text-sm text-white">
+            <span class="text-nowrap">{{namakota}} - {{ jadwalsolat['jadwal']['data']['tanggal'] }}</span>
+          </p>
+        </div>
+      </div>
+
+
+
+    </div>
+
+  </div>
+  
+</div>
+
+{% endblock %}
